@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+mlruns/
+codecarbon_logs/
+*.pyc
+

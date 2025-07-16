@@ -1,0 +1,326 @@
+Last login: Wed Jul 16 16:51:25 on ttys000
+(base) olivia@faransinas-MacBook-Air ~ % cd mlflow-feature-store           
+cd: no such file or directory: mlflow-feature-store
+(base) olivia@faransinas-MacBook-Air ~ % cd ~/Downloads/MLOps/mlflow-feature-store
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % ls
+README.md		mlruns			src
+codecarbon_logs		requirements.txt	train.py
+data			run_experiment.py
+feature_engineering.py	run_experiments.py
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % nano run_experiment.py
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % python run_experiments.py
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % python run_experiment.py 
+Traceback (most recent call last):
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/run_experiment.py", line 1, in <module>
+    from src.feature_engineering import create_feature_v1, create_feature_v2
+ImportError: cannot import name 'create_feature_v1' from 'src.feature_engineering' (/Users/olivia/Downloads/MLOps/mlflow-feature-store/src/feature_engineering.py)
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % cat src/feature_engineering.py
+
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % nano feature_engineering.py
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % ls src/
+
+__pycache__		feature_engineering.py	train.py
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % touch src/__init__.py
+
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % python run_experiments.py
+
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % python run_experiment.py 
+
+Traceback (most recent call last):
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/run_experiment.py", line 1, in <module>
+    from src.feature_engineering import create_feature_v1, create_feature_v2
+ImportError: cannot import name 'create_feature_v1' from 'src.feature_engineering' (/Users/olivia/Downloads/MLOps/mlflow-feature-store/src/feature_engineering.py)
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % ls
+README.md		feature_engineering.py	run_experiment.py	train.py
+codecarbon_logs		mlruns			run_experiments.py
+data			requirements.txt	src
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % nano feature_engineering.py
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % nano run_experiment.py
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % nano run_experiment.py
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % python run_experiment.py   
+
+Traceback (most recent call last):
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/run_experiment.py", line 2, in <module>
+    from train import train_model
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/train.py", line 1, in <module>
+    import mlflow
+ModuleNotFoundError: No module named 'mlflow'
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % python -m venv .venv
+
+(base) olivia@faransinas-MacBook-Air mlflow-feature-store % source .venv/bin/activate
+
+(.venv) (base) olivia@faransinas-MacBook-Air mlflow-feature-store % python run_experiment.py 
+
+Traceback (most recent call last):
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/run_experiment.py", line 8, in <module>
+    "v1": create_feature_v1(df.copy()),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/feature_engineering.py", line 4, in create_feature_v1
+    return df[['age', 'height', 'weight', 'total_lift']].dropna()
+           ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/.venv/lib/python3.12/site-packages/pandas/core/frame.py", line 4113, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6212, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6264, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['total_lift'] not in index"
+(.venv) (base) olivia@faransinas-MacBook-Air mlflow-feature-store % nano feature_engineering.py
+(.venv) (base) olivia@faransinas-MacBook-Air mlflow-feature-store % python run_experiment.py   
+
+2025/07/16 17:18:33 INFO mlflow.tracking.fluent: Experiment with name 'Athletes_Prediction' does not exist. Creating a new experiment.
+[codecarbon WARNING @ 17:18:33] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 17:18:33] Error while trying to count physical CPUs: [Errno 2] No such file or directory: 'lscpu'. Defaulting to 1.
+[codecarbon INFO @ 17:18:33] [setup] RAM Tracking...
+[codecarbon INFO @ 17:18:33] [setup] CPU Tracking...
+Password:
+[codecarbon INFO @ 17:18:49] Tracking Apple CPU and GPU via PowerMetrics
+[codecarbon INFO @ 17:18:50] [setup] GPU Tracking...
+[codecarbon INFO @ 17:18:50] No GPU found.
+[codecarbon INFO @ 17:18:50] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: PowerMetrics
+                GPU Tracking Method: PowerMetrics
+            
+[codecarbon INFO @ 17:18:50] >>> Tracker's metadata:
+[codecarbon INFO @ 17:18:50]   Platform system: macOS-15.5-arm64-arm-64bit
+[codecarbon INFO @ 17:18:50]   Python version: 3.12.3
+[codecarbon INFO @ 17:18:50]   CodeCarbon version: 3.0.4
+[codecarbon INFO @ 17:18:50]   Available RAM : 8.000 GB
+[codecarbon INFO @ 17:18:50]   CPU count: 8 thread(s) in 1 physical CPU(s)
+[codecarbon INFO @ 17:18:50]   CPU model: Apple M1
+[codecarbon INFO @ 17:18:50]   GPU count: 1
+[codecarbon INFO @ 17:18:50]   GPU model: Apple M1
+[codecarbon INFO @ 17:18:54] Emissions data (if any) will be saved to file /Users/olivia/Downloads/MLOps/mlflow-feature-store/codecarbon_logs/emissions.csv
+Traceback (most recent call last):
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/run_experiment.py", line 19, in <module>
+    train_model(data, version, **params)
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/train.py", line 23, in train_model
+    rmse = mean_squared_error(y_test, preds, squared=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/.venv/lib/python3.12/site-packages/sklearn/utils/_param_validation.py", line 196, in wrapper
+    params = func_sig.bind(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/inspect.py", line 3242, in bind
+    return self._bind(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/inspect.py", line 3231, in _bind
+    raise TypeError(
+TypeError: got an unexpected keyword argument 'squared'
+(.venv) (base) olivia@faransinas-MacBook-Air mlflow-feature-store % nano train.py
+(.venv) (base) olivia@faransinas-MacBook-Air mlflow-feature-store % python run_experiment.py
+
+[codecarbon WARNING @ 17:22:17] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 17:22:17] Error while trying to count physical CPUs: [Errno 2] No such file or directory: 'lscpu'. Defaulting to 1.
+[codecarbon INFO @ 17:22:17] [setup] RAM Tracking...
+[codecarbon INFO @ 17:22:17] [setup] CPU Tracking...
+[codecarbon INFO @ 17:22:18] Tracking Apple CPU and GPU via PowerMetrics
+[codecarbon INFO @ 17:22:18] [setup] GPU Tracking...
+[codecarbon INFO @ 17:22:18] No GPU found.
+[codecarbon INFO @ 17:22:18] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: PowerMetrics
+                GPU Tracking Method: PowerMetrics
+            
+[codecarbon INFO @ 17:22:18] >>> Tracker's metadata:
+[codecarbon INFO @ 17:22:18]   Platform system: macOS-15.5-arm64-arm-64bit
+[codecarbon INFO @ 17:22:18]   Python version: 3.12.3
+[codecarbon INFO @ 17:22:18]   CodeCarbon version: 3.0.4
+[codecarbon INFO @ 17:22:18]   Available RAM : 8.000 GB
+[codecarbon INFO @ 17:22:18]   CPU count: 8 thread(s) in 1 physical CPU(s)
+[codecarbon INFO @ 17:22:18]   CPU model: Apple M1
+[codecarbon INFO @ 17:22:18]   GPU count: 1
+[codecarbon INFO @ 17:22:18]   GPU model: Apple M1
+[codecarbon INFO @ 17:22:22] Emissions data (if any) will be saved to file /Users/olivia/Downloads/MLOps/mlflow-feature-store/codecarbon_logs/emissions.csv
+[codecarbon INFO @ 17:22:25] Energy consumed for RAM : 0.000003 kWh. RAM Power : 3.0 W
+[codecarbon INFO @ 17:22:27] Energy consumed for all CPUs : 0.000000 kWh. Total CPU Power : 0.1609 W
+[codecarbon INFO @ 17:22:28] Energy consumed for all GPUs : 0.000000 kWh. Total GPU Power : 0.0009 W
+[codecarbon INFO @ 17:22:28] 0.000003 kWh of electricity used since the beginning.
+2025/07/16 17:22:28 WARNING mlflow.models.model: `artifact_path` is deprecated. Please use `name` instead.
+2025/07/16 17:22:30 WARNING mlflow.models.model: Model logged without a signature and input example. Please set `input_example` parameter when logging the model to auto infer the model signature.
+[codecarbon WARNING @ 17:22:30] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 17:22:30] Error while trying to count physical CPUs: [Errno 2] No such file or directory: 'lscpu'. Defaulting to 1.
+[codecarbon INFO @ 17:22:30] [setup] RAM Tracking...
+[codecarbon INFO @ 17:22:30] [setup] CPU Tracking...
+[codecarbon INFO @ 17:22:31] Tracking Apple CPU and GPU via PowerMetrics
+[codecarbon INFO @ 17:22:31] [setup] GPU Tracking...
+[codecarbon INFO @ 17:22:31] No GPU found.
+[codecarbon INFO @ 17:22:31] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: PowerMetrics
+                GPU Tracking Method: PowerMetrics
+            
+[codecarbon INFO @ 17:22:31] >>> Tracker's metadata:
+[codecarbon INFO @ 17:22:31]   Platform system: macOS-15.5-arm64-arm-64bit
+[codecarbon INFO @ 17:22:31]   Python version: 3.12.3
+[codecarbon INFO @ 17:22:31]   CodeCarbon version: 3.0.4
+[codecarbon INFO @ 17:22:31]   Available RAM : 8.000 GB
+[codecarbon INFO @ 17:22:31]   CPU count: 8 thread(s) in 1 physical CPU(s)
+[codecarbon INFO @ 17:22:31]   CPU model: Apple M1
+[codecarbon INFO @ 17:22:31]   GPU count: 1
+[codecarbon INFO @ 17:22:31]   GPU model: Apple M1
+[codecarbon INFO @ 17:22:33] Emissions data (if any) will be saved to file /Users/olivia/Downloads/MLOps/mlflow-feature-store/codecarbon_logs/emissions.csv
+[codecarbon INFO @ 17:22:44] Energy consumed for RAM : 0.000009 kWh. RAM Power : 3.0 W
+[codecarbon INFO @ 17:22:46] Energy consumed for all CPUs : 0.000007 kWh. Total CPU Power : 2.5121999999999995 W
+[codecarbon INFO @ 17:22:47] Energy consumed for all GPUs : 0.000000 kWh. Total GPU Power : 0.0018 W
+[codecarbon INFO @ 17:22:47] 0.000016 kWh of electricity used since the beginning.
+2025/07/16 17:22:48 WARNING mlflow.models.model: `artifact_path` is deprecated. Please use `name` instead.
+2025/07/16 17:22:50 WARNING mlflow.models.model: Model logged without a signature and input example. Please set `input_example` parameter when logging the model to auto infer the model signature.
+[codecarbon WARNING @ 17:22:50] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 17:22:50] Error while trying to count physical CPUs: [Errno 2] No such file or directory: 'lscpu'. Defaulting to 1.
+[codecarbon INFO @ 17:22:50] [setup] RAM Tracking...
+[codecarbon INFO @ 17:22:50] [setup] CPU Tracking...
+[codecarbon INFO @ 17:22:50] Tracking Apple CPU and GPU via PowerMetrics
+[codecarbon INFO @ 17:22:50] [setup] GPU Tracking...
+[codecarbon INFO @ 17:22:50] No GPU found.
+[codecarbon INFO @ 17:22:50] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: PowerMetrics
+                GPU Tracking Method: PowerMetrics
+            
+[codecarbon INFO @ 17:22:50] >>> Tracker's metadata:
+[codecarbon INFO @ 17:22:50]   Platform system: macOS-15.5-arm64-arm-64bit
+[codecarbon INFO @ 17:22:50]   Python version: 3.12.3
+[codecarbon INFO @ 17:22:50]   CodeCarbon version: 3.0.4
+[codecarbon INFO @ 17:22:50]   Available RAM : 8.000 GB
+[codecarbon INFO @ 17:22:50]   CPU count: 8 thread(s) in 1 physical CPU(s)
+[codecarbon INFO @ 17:22:50]   CPU model: Apple M1
+[codecarbon INFO @ 17:22:50]   GPU count: 1
+[codecarbon INFO @ 17:22:50]   GPU model: Apple M1
+[codecarbon WARNING @ 17:22:50] Unable to access geographical location through primary API. Will resort to using the backup API - Exception : HTTPSConnectionPool(host='get.geojs.io', port=443): Max retries exceeded with url: /v1/ip/geo.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x117691a30>: Failed to resolve 'get.geojs.io' ([Errno 8] nodename nor servname provided, or not known)")) - url=https://get.geojs.io/v1/ip/geo.json
+[codecarbon WARNING @ 17:22:50] Unable to access geographical location. Using 'Canada' as the default value - Exception : HTTPSConnectionPool(host='ip-api.com', port=443): Max retries exceeded with url: /json/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x11760f410>: Failed to resolve 'ip-api.com' ([Errno 8] nodename nor servname provided, or not known)")) - url=https://get.geojs.io/v1/ip/geo.json
+[codecarbon INFO @ 17:22:50] Emissions data (if any) will be saved to file /Users/olivia/Downloads/MLOps/mlflow-feature-store/codecarbon_logs/emissions.csv
+Traceback (most recent call last):
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/run_experiment.py", line 19, in <module>
+    train_model(data, version, **params)
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/train.py", line 20, in train_model
+    model.fit(X_train, y_train)
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/.venv/lib/python3.12/site-packages/sklearn/base.py", line 1363, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/.venv/lib/python3.12/site-packages/sklearn/ensemble/_forest.py", line 374, in fit
+    estimator._compute_missing_values_in_feature_mask(
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/.venv/lib/python3.12/site-packages/sklearn/tree/_classes.py", line 222, in _compute_missing_values_in_feature_mask
+    _assert_all_finite_element_wise(X, xp=np, allow_nan=True, **common_kwargs)
+  File "/Users/olivia/Downloads/MLOps/mlflow-feature-store/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py", line 169, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains infinity or a value too large for dtype('float32').
+(.venv) (base) olivia@faransinas-MacBook-Air mlflow-feature-store % nano feature_engineering.py
+(.venv) (base) olivia@faransinas-MacBook-Air mlflow-feature-store % python run_experiment.py   
+
+[codecarbon WARNING @ 17:25:04] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 17:25:04] Error while trying to count physical CPUs: [Errno 2] No such file or directory: 'lscpu'. Defaulting to 1.
+[codecarbon INFO @ 17:25:04] [setup] RAM Tracking...
+[codecarbon INFO @ 17:25:04] [setup] CPU Tracking...
+[codecarbon INFO @ 17:25:04] Tracking Apple CPU and GPU via PowerMetrics
+[codecarbon INFO @ 17:25:05] [setup] GPU Tracking...
+[codecarbon INFO @ 17:25:05] No GPU found.
+[codecarbon INFO @ 17:25:05] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: PowerMetrics
+                GPU Tracking Method: PowerMetrics
+            
+[codecarbon INFO @ 17:25:05] >>> Tracker's metadata:
+[codecarbon INFO @ 17:25:05]   Platform system: macOS-15.5-arm64-arm-64bit
+[codecarbon INFO @ 17:25:05]   Python version: 3.12.3
+[codecarbon INFO @ 17:25:05]   CodeCarbon version: 3.0.4
+[codecarbon INFO @ 17:25:05]   Available RAM : 8.000 GB
+[codecarbon INFO @ 17:25:05]   CPU count: 8 thread(s) in 1 physical CPU(s)
+[codecarbon INFO @ 17:25:05]   CPU model: Apple M1
+[codecarbon INFO @ 17:25:05]   GPU count: 1
+[codecarbon INFO @ 17:25:05]   GPU model: Apple M1
+[codecarbon INFO @ 17:25:08] Emissions data (if any) will be saved to file /Users/olivia/Downloads/MLOps/mlflow-feature-store/codecarbon_logs/emissions.csv
+[codecarbon INFO @ 17:25:08] Energy consumed for RAM : 0.000000 kWh. RAM Power : 3.0 W
+[codecarbon INFO @ 17:25:10] Energy consumed for all CPUs : 0.000000 kWh. Total CPU Power : 1.4055 W
+[codecarbon INFO @ 17:25:11] Energy consumed for all GPUs : 0.000000 kWh. Total GPU Power : 0.0 W
+[codecarbon INFO @ 17:25:11] 0.000000 kWh of electricity used since the beginning.
+2025/07/16 17:25:11 WARNING mlflow.models.model: `artifact_path` is deprecated. Please use `name` instead.
+2025/07/16 17:25:14 WARNING mlflow.models.model: Model logged without a signature and input example. Please set `input_example` parameter when logging the model to auto infer the model signature.
+[codecarbon WARNING @ 17:25:14] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 17:25:14] Error while trying to count physical CPUs: [Errno 2] No such file or directory: 'lscpu'. Defaulting to 1.
+[codecarbon INFO @ 17:25:14] [setup] RAM Tracking...
+[codecarbon INFO @ 17:25:14] [setup] CPU Tracking...
+[codecarbon INFO @ 17:25:14] Tracking Apple CPU and GPU via PowerMetrics
+[codecarbon INFO @ 17:25:14] [setup] GPU Tracking...
+[codecarbon INFO @ 17:25:14] No GPU found.
+[codecarbon INFO @ 17:25:14] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: PowerMetrics
+                GPU Tracking Method: PowerMetrics
+            
+[codecarbon INFO @ 17:25:14] >>> Tracker's metadata:
+[codecarbon INFO @ 17:25:14]   Platform system: macOS-15.5-arm64-arm-64bit
+[codecarbon INFO @ 17:25:14]   Python version: 3.12.3
+[codecarbon INFO @ 17:25:14]   CodeCarbon version: 3.0.4
+[codecarbon INFO @ 17:25:14]   Available RAM : 8.000 GB
+[codecarbon INFO @ 17:25:14]   CPU count: 8 thread(s) in 1 physical CPU(s)
+[codecarbon INFO @ 17:25:14]   CPU model: Apple M1
+[codecarbon INFO @ 17:25:14]   GPU count: 1
+[codecarbon INFO @ 17:25:14]   GPU model: Apple M1
+[codecarbon INFO @ 17:25:16] Emissions data (if any) will be saved to file /Users/olivia/Downloads/MLOps/mlflow-feature-store/codecarbon_logs/emissions.csv
+[codecarbon INFO @ 17:25:16] Energy consumed for RAM : 0.000000 kWh. RAM Power : 3.0 W
+[codecarbon INFO @ 17:25:18] Energy consumed for all CPUs : 0.000000 kWh. Total CPU Power : 0.1555 W
+[codecarbon INFO @ 17:25:19] Energy consumed for all GPUs : 0.000000 kWh. Total GPU Power : 0.0 W
+[codecarbon INFO @ 17:25:19] 0.000000 kWh of electricity used since the beginning.
+2025/07/16 17:25:19 WARNING mlflow.models.model: `artifact_path` is deprecated. Please use `name` instead.
+2025/07/16 17:25:21 WARNING mlflow.models.model: Model logged without a signature and input example. Please set `input_example` parameter when logging the model to auto infer the model signature.
+[codecarbon WARNING @ 17:25:21] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 17:25:21] Error while trying to count physical CPUs: [Errno 2] No such file or directory: 'lscpu'. Defaulting to 1.
+[codecarbon INFO @ 17:25:21] [setup] RAM Tracking...
+[codecarbon INFO @ 17:25:21] [setup] CPU Tracking...
+[codecarbon INFO @ 17:25:22] Tracking Apple CPU and GPU via PowerMetrics
+[codecarbon INFO @ 17:25:22] [setup] GPU Tracking...
+[codecarbon INFO @ 17:25:22] No GPU found.
+[codecarbon INFO @ 17:25:22] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: PowerMetrics
+                GPU Tracking Method: PowerMetrics
+            
+[codecarbon INFO @ 17:25:22] >>> Tracker's metadata:
+[codecarbon INFO @ 17:25:22]   Platform system: macOS-15.5-arm64-arm-64bit
+[codecarbon INFO @ 17:25:22]   Python version: 3.12.3
+[codecarbon INFO @ 17:25:22]   CodeCarbon version: 3.0.4
+[codecarbon INFO @ 17:25:22]   Available RAM : 8.000 GB
+[codecarbon INFO @ 17:25:22]   CPU count: 8 thread(s) in 1 physical CPU(s)
+[codecarbon INFO @ 17:25:22]   CPU model: Apple M1
+[codecarbon INFO @ 17:25:22]   GPU count: 1
+[codecarbon INFO @ 17:25:22]   GPU model: Apple M1
+[codecarbon INFO @ 17:25:22] Emissions data (if any) will be saved to file /Users/olivia/Downloads/MLOps/mlflow-feature-store/codecarbon_logs/emissions.csv
+[codecarbon INFO @ 17:25:22] Energy consumed for RAM : 0.000000 kWh. RAM Power : 3.0 W
+[codecarbon INFO @ 17:25:24] Energy consumed for all CPUs : 0.000000 kWh. Total CPU Power : 0.040299999999999996 W
+[codecarbon INFO @ 17:25:26] Energy consumed for all GPUs : 0.000000 kWh. Total GPU Power : 0.0018 W
+[codecarbon INFO @ 17:25:26] 0.000000 kWh of electricity used since the beginning.
+2025/07/16 17:25:26 WARNING mlflow.models.model: `artifact_path` is deprecated. Please use `name` instead.
+2025/07/16 17:25:27 WARNING mlflow.models.model: Model logged without a signature and input example. Please set `input_example` parameter when logging the model to auto infer the model signature.
+[codecarbon WARNING @ 17:25:27] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon WARNING @ 17:25:27] Error while trying to count physical CPUs: [Errno 2] No such file or directory: 'lscpu'. Defaulting to 1.
+[codecarbon INFO @ 17:25:27] [setup] RAM Tracking...
+[codecarbon INFO @ 17:25:27] [setup] CPU Tracking...
+[codecarbon INFO @ 17:25:28] Tracking Apple CPU and GPU via PowerMetrics
+[codecarbon INFO @ 17:25:28] [setup] GPU Tracking...
+[codecarbon INFO @ 17:25:28] No GPU found.
+[codecarbon INFO @ 17:25:28] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: PowerMetrics
+                GPU Tracking Method: PowerMetrics
+            
+[codecarbon INFO @ 17:25:28] >>> Tracker's metadata:
+[codecarbon INFO @ 17:25:28]   Platform system: macOS-15.5-arm64-arm-64bit
+[codecarbon INFO @ 17:25:28]   Python version: 3.12.3
+[codecarbon INFO @ 17:25:28]   CodeCarbon version: 3.0.4
+[codecarbon INFO @ 17:25:28]   Available RAM : 8.000 GB
+[codecarbon INFO @ 17:25:28]   CPU count: 8 thread(s) in 1 physical CPU(s)
+[codecarbon INFO @ 17:25:28]   CPU model: Apple M1
+[codecarbon INFO @ 17:25:28]   GPU count: 1
+[codecarbon INFO @ 17:25:28]   GPU model: Apple M1
+[codecarbon INFO @ 17:25:28] Emissions data (if any) will be saved to file /Users/olivia/Downloads/MLOps/mlflow-feature-store/codecarbon_logs/emissions.csv
+[codecarbon INFO @ 17:25:29] Energy consumed for RAM : 0.000000 kWh. RAM Power : 3.0 W
+[codecarbon INFO @ 17:25:30] Energy consumed for all CPUs : 0.000000 kWh. Total CPU Power : 0.10819999999999999 W
+[codecarbon INFO @ 17:25:32] Energy consumed for all GPUs : 0.000000 kWh. Total GPU Power : 0.0009 W
+[codecarbon INFO @ 17:25:32] 0.000000 kWh of electricity used since the beginning.
+2025/07/16 17:25:32 WARNING mlflow.models.model: `artifact_path` is deprecated. Please use `name` instead.
+2025/07/16 17:25:34 WARNING mlflow.models.model: Model logged without a signature and input example. Please set `input_example` parameter when logging the model to auto infer the model signature.
+(.venv) (base) olivia@faransinas-MacBook-Air mlflow-feature-store % cd ~/Downloads/MLOps/mlflow-feature-store
+
+(.venv) (base) olivia@faransinas-MacBook-Air mlflow-feature-store % 
